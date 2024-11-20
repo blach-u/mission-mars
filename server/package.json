@@ -5,8 +5,8 @@
   "main": "app.ts",
   "private": true,
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "nodemon --exec npx ts-node app.ts",
+    "start": "NODE_ENV=production node dist/app.js",
+    "dev": "NODE_ENV=development nodemon --exec ts-node app.ts",
     "lint": "eslint . --fix",
     "build": "tsc"
   },

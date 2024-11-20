@@ -25,4 +25,11 @@ interface SearchBarProps {
 interface ExportCSVButtonProps {
   astronauts: Astronaut[];
 }
-export type { Astronaut, AstronautListProps, AstronautFormProps, SearchBarProps, ExportCSVButtonProps };
+
+interface AppConfig {
+  app: {
+    env: string
+    baseUrl: string
+  };
+}
+export type { Astronaut, AstronautListProps, AstronautFormProps, SearchBarProps, ExportCSVButtonProps, AppConfig };
