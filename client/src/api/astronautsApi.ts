@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { Astronaut } from '../types/astronautTypes';
+import config from '../config/config';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = config.app.baseUrl;
+console.log(BASE_URL);
+
 export const fetchAstronauts = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/api/astronauts`);

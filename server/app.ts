@@ -10,16 +10,19 @@ import astronautsRoute from './src/routes/astronautsRoutes';
 const app = express();
 const port = config.app.port || 3001;
 
-app.use(cors());
+app.use(cors({
+    origin: config.app.corsOrigin,
+}));
 app.use(bodyParser.json());
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+if (config.app.env !== 'production') {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+}
 
 app.use('/api', astronautsRoute);
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-    console.log(`Swagger docs available at http://localhost:${port}/api-docs`);
+    console.log(`Server is running in ${config.app.env} mode on port ${port}`);
 });
 
 export default app;
