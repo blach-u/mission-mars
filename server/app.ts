@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpecs from './swaggerConfig';
-import config from '../server/src/config/config';
+import config from './src/config/config';
 import cors from 'cors';
 import astronautsRoute from './src/routes/astronautsRoutes';
 
