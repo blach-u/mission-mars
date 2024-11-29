@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 interface Astronaut {
   id?: number;
   name: string;
@@ -33,6 +34,29 @@ interface AppConfig {
   };
 }
 
+type Moon = {
+  name: string;
+  radius: number;
+  distance: number;
+  orbitSpeed: number;
+  mesh?: THREE.Mesh;
+  angle?: number;
+};
 
-export type { Astronaut, AstronautListProps, AstronautFormProps, SearchBarProps, ExportCSVButtonProps, AppConfig };
+type Planet = {
+    name: string;
+    radius: number;
+    distance: number;
+    texture: string;
+    orbitSpeed: number;
+    mesh?: THREE.Mesh;
+    moons?: Moon[];
+    rings?: {
+      innerRadius: number;
+      outerRadius: number;
+      texture: string;
+    };
+    angle?: number;
+  };
 
+export type { Astronaut, AstronautListProps, AstronautFormProps, SearchBarProps, ExportCSVButtonProps, AppConfig, Moon, Planet };

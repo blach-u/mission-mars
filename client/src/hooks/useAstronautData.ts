@@ -21,7 +21,7 @@ export const useAstronautData = () => {
         setMainPageError(null);
       } catch (error) {
         console.error('An unexpected error occurred:', error);
-        setMainPageError('Failed to load astronauts');
+        setMainPageError('Failed to load astronauts... Please, contact the support');
       }
     };
 

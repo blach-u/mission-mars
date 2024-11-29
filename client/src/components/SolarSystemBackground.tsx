@@ -1,30 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { Planet, Moon } from '../types/astronautTypes';
 
-type Moon = {
-  name: string;
-  radius: number;
-  distance: number;
-  orbitSpeed: number;
-  mesh?: THREE.Mesh;
-  angle?: number;
-};
-
-type Planet = {
-    name: string;
-    radius: number;
-    distance: number;
-    texture: string;
-    orbitSpeed: number;
-    mesh?: THREE.Mesh;
-    moons?: Moon[];
-    rings?: {
-      innerRadius: number;
-      outerRadius: number;
-      texture: string;
-    };
-    angle?: number;
-  };
 const rotationSpeeds: { [key: string]: number } = {
   Sun: 0.0005,
   Mercury: 0.0001,
@@ -261,9 +238,7 @@ const SolarSystemBackground: React.FC = () => {
     };
     window.addEventListener('resize', onWindowResize);
 
-
     animate();
-
 
     return () => {
       window.removeEventListener('resize', onWindowResize);
