@@ -9,18 +9,15 @@
     "outDir": "./dist",
     "types": [
       "node"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
     ]
   },
   "include": [
     "app.ts",
     "src/**/*.ts",
+    "../client/src/config/config.ts"
   ],
   "exclude": [
-    "../client/**/*",
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
