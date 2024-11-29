@@ -16,9 +16,6 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
     if (selectedAstronaut) {
       setName(selectedAstronaut.name);
       setRole(selectedAstronaut.role);
-    } else {
-      setName('');
-      setRole('');
     }
   }, [selectedAstronaut]);
 
@@ -26,9 +23,15 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
     e.preventDefault();
     handleSubmit({ name, role });
   };
-
+  const clearData = () =>{
+    setName('');
+    setRole('');
+  };
   return (
-    <Modal show={showForm} onHide={handleClose}>
+    <Modal show={showForm} onHide={() =>{
+      clearData();
+      handleClose();
+    }}>
       <Modal.Header closeButton>
         <Modal.Title>{selectedAstronaut ? 'Update Astronaut' : 'Create Astronaut'}</Modal.Title>
       </Modal.Header>
@@ -57,7 +60,10 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
           <Button variant='primary' type='submit'>
             {selectedAstronaut ? 'Update' : 'Create'}
           </Button>
-          <Button variant='secondary' className='ms-2' onClick={handleClose}>
+          <Button variant='secondary' className='ms-2' onClick={() =>{
+            clearData();
+            handleClose();
+          }}>
             Cancel
           </Button>
         </Form>

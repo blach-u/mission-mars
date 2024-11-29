@@ -55,11 +55,11 @@ const AstronautControlPanel: React.FC = () => {
       />
 
       <AstronautForm
-        key={formMode === 'create' ? Date.now() : selectedAstronaut?.id && Date.now()}
         showForm={showForm}
         selectedAstronaut={formMode === 'edit' ? selectedAstronaut : undefined}
         handleClose={() => {
           setShowForm(false);
+          setSelectedAstronaut(null);
           setFormError(null);
         }}
         handleSubmit={handleFormSubmit}
