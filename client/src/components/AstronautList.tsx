@@ -14,7 +14,7 @@ const AstronautList: React.FC<AstronautListProps> = ({ astronauts, handleUpdate,
             <Button
               variant='primary'
               size='sm'
-              className='me-2'
+              className='me-2 space-button'
               onClick={() => handleUpdate(astronaut)}
             >
               Update
@@ -22,6 +22,7 @@ const AstronautList: React.FC<AstronautListProps> = ({ astronauts, handleUpdate,
             <Button
               variant='danger'
               size='sm'
+              className ='space-button'
               onClick={() => {
                 if (astronaut.id !== undefined) {
                   handleDelete(astronaut.id);

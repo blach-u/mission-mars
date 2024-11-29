@@ -28,14 +28,14 @@ const AstronautControlPanel: React.FC = () => {
 
   return (
     <Container>
-      <Row className='align-items-center my-3'>
+      <Row className='align-items-center my-3 pseudo-space-nav'>
         <Col>
-          <h2>Astronauts</h2>
+          <h2 className='section-title'>Astronauts</h2>
         </Col>
         <Col className='d-flex justify-content-end'>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <ExportCSVButton astronauts={filteredAstronauts} />
-          <Button variant='success' onClick={() => {
+          <Button variant='success' className='space-button' onClick={() => {
             setSelectedAstronaut(null);
             setFormMode('create');
             setShowForm(true);

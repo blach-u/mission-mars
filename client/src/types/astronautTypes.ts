@@ -32,4 +32,7 @@ interface AppConfig {
     baseUrl: string
   };
 }
+
+
 export type { Astronaut, AstronautListProps, AstronautFormProps, SearchBarProps, ExportCSVButtonProps, AppConfig };
+

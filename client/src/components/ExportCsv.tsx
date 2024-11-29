@@ -5,7 +5,7 @@ import { exportCSV } from '../utils/exportCsv';
 
 const ExportCSVButton: React.FC<ExportCSVButtonProps> = ({ astronauts }) => {
   return (
-    <Button variant='info' className='me-2' onClick={() => exportCSV(astronauts)}>
+    <Button variant='info' className='me-2 btn-export space-button' onClick={() => exportCSV(astronauts)}>
             Export CSV
     </Button>
   );

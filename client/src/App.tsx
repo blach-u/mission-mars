@@ -3,12 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/App.scss';
 import AstronautControlPanel from './components/AstronautControlPanel';
 import Navigation from './components/Navigation';
+import SolarSystemBackground from './components/SolarSystemBackground';
 
 function App() {
   return (
     <div className='App'>
-      <h1>Control panel - mission Mars</h1>
-      <Navigation />
+      <SolarSystemBackground />
+      {/* <Navigation /> */}
       <AstronautControlPanel />
     </div>
   );
