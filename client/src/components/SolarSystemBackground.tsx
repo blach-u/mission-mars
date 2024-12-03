@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { Planet } from '../types/astronautTypes';
@@ -20,7 +19,7 @@ const SolarSystemBackground: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
+    const currentMountRef = mountRef.current;
     const planets: Planet[] = [
       {
         name: 'Mercury',
@@ -99,8 +98,8 @@ const SolarSystemBackground: React.FC = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    if (mountRef.current) {
-      mountRef.current.appendChild(renderer.domElement);
+    if (currentMountRef) {
+      currentMountRef.appendChild(renderer.domElement);
     }
 
     camera.position.set(0, 100, 100);
@@ -244,8 +243,8 @@ const SolarSystemBackground: React.FC = () => {
     return () => {
       window.removeEventListener('resize', onWindowResize);
       renderer.dispose();
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMountRef) {
+        currentMountRef.removeChild(renderer.domElement);
       }
     };
   }, []);
