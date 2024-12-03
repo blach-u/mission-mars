@@ -27,7 +27,6 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
   const clearData = () =>{
     setName('');
     setRole('');
-    console.log('TU JESTEM');
   };
   return (
     <Modal show={showForm} onHide={() =>{
