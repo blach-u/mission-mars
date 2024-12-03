@@ -9,7 +9,6 @@ function App() {
   return (
     <div className='App'>
       <SolarSystemBackground />
-      {/* <Navigation /> */}
       <AstronautControlPanel />
     </div>
   );
