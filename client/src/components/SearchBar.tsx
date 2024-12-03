@@ -4,7 +4,7 @@ import { SearchBarProps } from '../types/astronautTypes';
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
   return (
-    <InputGroup className='me-2' style={{ maxWidth: '300px' }}>
+    <InputGroup className='me-2 space-seach-bar' style={{ maxWidth: '300px' }}>
       <FormControl
         type='text'
         placeholder='Search Astronauts'

@@ -22,6 +22,7 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleSubmit({ name, role });
+    clearData();
   };
   const clearData = () =>{
     setName('');
@@ -57,10 +58,10 @@ const AstronautForm: React.FC<AstronautFormProps> = ({
               onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>
+          <Button variant='primary' type='submit' className='space-button'>
             {selectedAstronaut ? 'Update' : 'Create'}
           </Button>
-          <Button variant='secondary' className='ms-2' onClick={() =>{
+          <Button variant='secondary' className='ms-2 space-button' onClick={() =>{
             clearData();
             handleClose();
           }}>
