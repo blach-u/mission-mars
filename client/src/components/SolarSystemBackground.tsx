@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { Planet, Moon } from '../types/astronautTypes';
+import { Planet } from '../types/astronautTypes';
 
 const rotationSpeeds: { [key: string]: number } = {
   Sun: 0.0005,
@@ -19,30 +19,6 @@ const SolarSystemBackground: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      3500
-    );
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    if (mountRef.current) {
-      mountRef.current.appendChild(renderer.domElement);
-    }
-
-    camera.position.set(0, 100, 100);
-    camera.lookAt(0, 0, 0);
-
-    const sunGeometry = new THREE.SphereGeometry(10, 64, 64);
-    const sunMaterial = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load('/textures/sun.jpg'),
-    });
-    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    scene.add(sun);
 
     const planets: Planet[] = [
       {
@@ -93,7 +69,7 @@ const SolarSystemBackground: React.FC = () => {
         distance: 75,
         texture: '/textures/saturn.jpg',
         orbitSpeed: 0.003,
-        rings: { innerRadius: 6, outerRadius: 10, texture: '/textures/saturn_rings.jpg' },
+        rings: { innerRadius: 6, outerRadius: 10 },
       },
       {
         name: 'Uranus',
@@ -110,7 +86,31 @@ const SolarSystemBackground: React.FC = () => {
         orbitSpeed: 0.001,
       },
     ];
-    
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      3500
+    );
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    if (mountRef.current) {
+      mountRef.current.appendChild(renderer.domElement);
+    }
+
+    camera.position.set(0, 100, 100);
+    camera.lookAt(0, 0, 0);
+
+    const sunGeometry = new THREE.SphereGeometry(10, 64, 64);
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      map: new THREE.TextureLoader().load('/textures/sun.jpg'),
+    });
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    scene.add(sun);
 
     const planetMeshes: Planet[] = [];
     planets.forEach((planet) => {
@@ -166,11 +166,11 @@ const SolarSystemBackground: React.FC = () => {
       }
     });
 
-    const pointLight = new THREE.PointLight(0xffffff, 2, 300);
+    const pointLight = new THREE.PointLight(0xffffff, 1000, 1000);
     pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.015);
     scene.add(ambientLight);
 
     scene.background = new THREE.Color(0x000000);

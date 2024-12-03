@@ -26,22 +26,6 @@ body {
   letter-spacing: 0.1em;
 }
 
-button {
-  background-color: #d90000;
-  border: none;
-  color: #fff;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-
-  &:hover {
-    background-color: #ff4040;
-  }
-}
-
 .alert {
   color: #fff;
   border: none;
@@ -93,12 +77,26 @@ button {
   background-color: #000;
   color: #00ff00;
   border: 2px dashed #00ff00;
+
+  &:hover,
+  &:active {
+    color: #000;
+    background-color: #00ff00;
+    border: 2px dashed #000;
+    box-shadow: none;
+  }
+
+  &:focus,
+  &:focus-visible {
+    color: #00ff00;
+    background-color: #000;
+    border: 2px dashed #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+  }
 }
 
-.space-button:hover {
-  color: #000;
-  background-color: #00ff00;
-  border: 2px dashed #000;
+.me-2:active {
+  border: none
 }
 
 .modal-content {

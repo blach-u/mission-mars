@@ -54,7 +54,6 @@ type Planet = {
     rings?: {
       innerRadius: number;
       outerRadius: number;
-      texture: string;
     };
     angle?: number;
   };
