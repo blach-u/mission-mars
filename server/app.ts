@@ -6,13 +6,9 @@ import swaggerSpecs from './swaggerConfig';
 import config from './src/config/config';
 import cors from 'cors';
 import astronautsRoute from './src/routes/astronautsRoutes';
-import helmet from 'helmet';
 
 const app = express();
 const port = config.app.port || 3001;
-
-
-app.use(helmet());
 
 app.use(cors({
     origin: config.app.corsOrigin,
