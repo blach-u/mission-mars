@@ -24,6 +24,10 @@ export const getAstronauts = async (req: Request, res: Response): Promise<Respon
 export const addAstronaut = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { name, role } = req.body;
+        const count = await Astronaut.count();
+        if (count >= 20) {
+            return res.status(400).json({ error: 'Cannot add more than 20 rows to the Astronaut table' });
+        }
 
         const newAstronaut = await Astronaut.create({ name, role });
         return res.status(201).json({ message: 'Astronaut added successfully!', astronaut: newAstronaut });
