@@ -6,9 +6,19 @@ import swaggerSpecs from './swaggerConfig';
 import config from './src/config/config';
 import cors from 'cors';
 import astronautsRoute from './src/routes/astronautsRoutes';
+import axios from 'axios';
 
 const app = express();
 const port = config.app.port || 3001;
+
+const url = 'https://mission-mars-prod.onrender.com';
+const interval = 10 * 60 * 1000;
+
+setInterval(() => {
+    axios.get(url)
+        .then(response => console.log(`Pinged at ${new Date().toISOString()}`))
+        .catch(error => console.error(`Ping failed: ${error.message}`));
+}, interval);
 
 app.use(cors({
     origin: config.app.corsOrigin,
